@@ -41,6 +41,7 @@ Assumption -> The signatures are going to be connected.
 But this is not always true. So this technique fails.
 
 
-
+### OCR + Line Sweep Algorithm
 The OCR Approach -> Identify the signatures and crop the images
 The LineSweep Algorithm -> Use OCR result images and do rectangle fitting across the signature.
+

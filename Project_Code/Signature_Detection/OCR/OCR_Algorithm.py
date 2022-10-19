@@ -22,7 +22,7 @@ above = 0
 total_files = 0
 processed_files = 0
 
-images_dir = "cheque_images"
+images_dir = "../../../Dataset/cheque_images"
 input_path = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), images_dir
 )
