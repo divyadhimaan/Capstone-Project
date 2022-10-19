@@ -27,8 +27,18 @@ Signature_Detection folder contains codes for different approaches:
 ### Walk through
 1. Install dependencies via: `pip install -r requirements.txt`
 2. For execution of signature detection approaches<br>
-   * Run the OCR Approach File - run `python acheque.py`<br>
-   * Run the LineSweep Algorithm - run `python lineSweepDetect.py` <br>
+   * OCR Approach File - run `python OCR_Algorithm.py`<br>
+   * LineSweep Algorithm - run `python lineSweepDetect.py` <br>
+   * Connected Components - run `python connectedComponent.py`
+
+
+### Signature Verification Approaches
+
+### OCR + Connected Components
+After the images have been cropped by OCR technique, We will use the Connected Components Algorithm
+to extract the signature from the image.
+Assumption -> The signatures are going to be connected.
+But this is not always true. So this technique fails.
 
 
 

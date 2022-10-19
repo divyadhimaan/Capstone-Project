@@ -6,7 +6,7 @@ But, we have used different algorithm for rectangle fitting across the signature
 The **Line-Sweeping algorithm** was run in both ways: vertically and horizontally.<br> 
 On the basis of this, the exact signature is detected and after that this image is passed as an input to the verification algorithm.
 
-The Result Images obtained from OCR based Signature Verifciation Approach are now passed through Line Sweep Algorithm. <br>
+The Result Images obtained from OCR based Signature Verification Approach are now passed through Line Sweep Algorithm. <br>
 
 
 ### Tools Used
