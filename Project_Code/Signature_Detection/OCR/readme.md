@@ -3,28 +3,31 @@
 
 ### Tool: pytesseract, OpenCV
 
-**Python-tesseract** is an optical character recognition (OCR) tool for python.
+1. **Python-tesseract** is an optical character recognition (OCR) tool for python.
 It will recognize and “read” the text embedded in images.
 
-**OpenCV-Python** is a library of Python bindings designed to solve computer vision problems.
+2. **OpenCV-Python** is a library of Python bindings designed to solve computer vision problems.
 
-Image is read from the */cheque_images* folder only if it is in *.jpg* format, using openCV module
+
+### Steps
+
+**Step1**: Image is read from the */cheque_images* folder only if it is in *.jpg* format, using openCV module
 
     cv2.imread()
 
-Now using pytesseract's inbuilt function we will extract the data from the image.
+**Step 2**: Now using pytesseract's inbuilt function we will extract the data from the image.
     
     pytesseract.image_to_data(Image.open('test.png'))
 
 Result of extracting data from image
-![img.png](../../../images/OCR_image_data.png)
+![OCR_image_data.png](../../../images/OCR_image_data.png)
 
-Now we can directly pick the text of the image.
+**Step 3**: Now we can directly pick the text of the image.
 We need *"Please sign above"*.
 
 We can easily find these words and get their location in the image from the (left, top, width, height pointers).
 
-Once the location of signatures is found, we can crop the image accordingly.
+**Step 4**: Once the location of signatures is found, we can crop the image accordingly.
 
 For cropping the image we will again use the opencv module
 
@@ -40,10 +43,13 @@ Parameters:
 
 **Return Value**: It returns an image.
 
-The resulting images are stored in the *Results* folder. 
+**Step 5:** The resulting images are stored in the *Results* folder. 
 
-
+### Result Images:
+![Result1.png](../../../images/OCR_Result_Image1.png)
+![Result2.png](../../../images/OCR_Result_Image2.png)
 
 ###### Refer for Documentation 
-* Pytesseract - https://pypi.org/project/pytesseract/
+* PIL - https://pillow.readthedocs.io/en/stable/
+* PIL Image - https://pillow.readthedocs.io/en/stable/reference/Image.html
 * cv2 - https://pypi.org/project/opencv-python/

@@ -27,7 +27,10 @@ Signature_Detection folder contains codes for different approaches:
 ### Walk through
 1. Install dependencies via: `pip install -r requirements.txt`
 2. For execution of signature detection approaches<br>
-   * OCR approach - run `python acheque.py`<br>
+   * Run the OCR Approach File - run `python acheque.py`<br>
+   * Run the LineSweep Algorithm - run `python lineSweepDetect.py` <br>
 
 
 
+The OCR Approach -> Identify the signatures and crop the images
+The LineSweep Algorithm -> Use OCR result images and do rectangle fitting across the signature.

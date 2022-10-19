@@ -19,6 +19,8 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tessera
 please = 0
 sign = 0
 above = 0
+total_files = 0
+processed_files = 0
 
 images_dir = "cheque_images"
 input_path = os.path.join(
@@ -26,7 +28,7 @@ input_path = os.path.join(
 )
 
 for filename in os.listdir(input_path):
-
+    total_files = total_files + 1
     if ".jpg" in filename:
         print("OCR Processing file -", filename)
         img = cv2.imread(os.path.join(input_path,filename))
@@ -86,18 +88,21 @@ for filename in os.listdir(input_path):
         2,
     )
     cropImg = img[
-        lengthSignCd[1] : lengthSignCd[1] + int(scaleY * lengthSign),
-        lengthSignCd[0] : lengthSignCd[0]
+        lengthSignCd[1]: lengthSignCd[1] + int(scaleY * lengthSign),
+        lengthSignCd[0]: lengthSignCd[0]
         + int((scaleXL + scaleXR + 1) * lengthSign),
     ]
 
-    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Results")
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "OCR_Results")
     if not os.path.exists(path):
         os.makedirs(path)
 
-    s1 = "Cropped_Image_" + filename
+    s1 = "OCR_Result_" + filename
     if cropImg.size != 0:
+
+        processed_files = processed_files + 1
         cv2.imwrite(os.path.join(path, s1), cropImg)
 
+print(str(processed_files) + "/" + str(total_files) + " files processed successfully.")
 print("Processing Complete.")
 print("You may check the Result folder in the same directory to see the cropped images.")
