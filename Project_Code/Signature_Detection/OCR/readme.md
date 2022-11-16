@@ -8,8 +8,14 @@ It will recognize and “read” the text embedded in images.
 
 2. **OpenCV-Python** is a library of Python bindings designed to solve computer vision problems.
 
+### Assumption
+
+Documents / Cheques contain phrases such as “Please sign above”, “Signature”, etc.
+
 
 ### Steps
+
+![img.png](../../../images/OCR_flow.png)
 
 **Step1**: Image is read from the */cheque_images* folder only if it is in *.jpg* format, using openCV module
 

@@ -22,7 +22,9 @@ above = 0
 total_files = 0
 processed_files = 0
 
+
 images_dir = "../../../Dataset/cheque_images"
+# images_dir = "image"
 input_path = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), images_dir
 )
@@ -49,8 +51,8 @@ for filename in os.listdir(input_path):
             # # d[11] => text field of the image
             # # d[6] => left pointer of the image
             # # d[7] => right pointer of the image
-            # # d[11] => width of the image
-            # # d[11] => height of the image
+            # # d[8] => width of the image
+            # # d[9] => height of the image
 
             if d[11].lower() == "please":
                 pleaseCd[0] = int(d[6])

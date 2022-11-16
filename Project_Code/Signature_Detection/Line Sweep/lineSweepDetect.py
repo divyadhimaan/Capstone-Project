@@ -4,9 +4,6 @@ import os
 import numpy as np
 import cv2
 
-# from itertools import product
-# from ufarray import *
-
 
 def main():
     images_dir = "../OCR/OCR_Results"

@@ -2,6 +2,7 @@ cycler==0.10.0
 kiwisolver==1.3.1
 matplotlib==3.3.3
 numpy==1.19.4
+# opencv-python==4.5.5.64
 opencv-python==4.4.0.46
 Pillow==8.0.1
 pyparsing==2.4.7
@@ -10,3 +11,7 @@ python-dateutil==2.8.1
 six==1.15.0
 imagehash==4.2.1
 scikit-image==0.19.3
+scikit-learn~=0.24.2
+scipy~=1.7.1
+# sklearn
+# opencv-contrib-python==4.6.0.66
