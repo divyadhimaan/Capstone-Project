@@ -144,7 +144,7 @@ def main():
 
     print(str(processed_files) + "/" + str(total_files) + " files processed successfully")
     print("Processing Complete.")
-    print("You may check the Result folder in the same directory to see the cropped images.")
+    print("You may check the Result folder in the same directory to see the cropped Project_Images.")
 
 
 if __name__ == "__main__":

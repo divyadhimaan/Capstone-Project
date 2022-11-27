@@ -15,7 +15,7 @@ Documents / Cheques contain phrases such as “Please sign above”, “Signatur
 
 ### Steps
 
-![img.png](../../../images/OCR_flow.png)
+![img.png](../../../Project_Images/OCR_flow.png)
 
 **Step1**: Image is read from the */cheque_images* folder only if it is in *.jpg* format, using openCV module
 
@@ -26,7 +26,7 @@ Documents / Cheques contain phrases such as “Please sign above”, “Signatur
     pytesseract.image_to_data(Image.open('test.png'))
 
 Result of extracting data from image
-![OCR_image_data.png](../../../images/OCR_image_data.png)
+![OCR_image_data.png](../../../Project_Images/OCR_image_data.png)
 
 **Step 3**: Now we can directly pick the text of the image.
 We need *"Please sign above"*.
@@ -52,8 +52,8 @@ Parameters:
 **Step 5:** The resulting images are stored in the *Results* folder. 
 
 ### Result Images:
-![Result1.png](../../../images/OCR_Result_Image1.png)
-![Result2.png](../../../images/OCR_Result_Image2.png)
+![Result1.png](../../../Project_Images/OCR_Result_Image1.png)
+![Result2.png](../../../Project_Images/OCR_Result_Image2.png)
 
 ###### Refer for Documentation 
 * PIL - https://pillow.readthedocs.io/en/stable/

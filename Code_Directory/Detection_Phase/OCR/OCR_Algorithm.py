@@ -23,7 +23,7 @@ total_files = 0
 processed_files = 0
 
 
-images_dir = "../../../Dataset/cheque_images"
+images_dir = "../../../Our_Dataset/cheque_images"
 # images_dir = "image"
 input_path = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), images_dir
@@ -107,4 +107,4 @@ for filename in os.listdir(input_path):
 
 print(str(processed_files) + "/" + str(total_files) + " files processed successfully.")
 print("Processing Complete.")
-print("You may check the Result folder in the same directory to see the cropped images.")
+print("You may check the Result folder in the same directory to see the cropped Project_Images.")

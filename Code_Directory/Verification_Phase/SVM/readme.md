@@ -52,11 +52,11 @@ contour features.
 
 1. We will load all the images from genuine and forged folder.
 2. Now, for all the images in genuine folder
-   1. For each image we will preprocess it. (refer to Preprocessing section above)
+   1. For each image we will preprocess it. i.e. we will extract the SIFT features of the image. (refer to Preprocessing section above)
    2. Next we will find the phash using imagehash module
       pHash is a simple algorithm that calculates image hash based on the DCT value of the image.
    3. We will now find the features of the image using the features files. (Aspect ratio, bounding rectangle area, 
        convex hull area, contour area)
-   4. All the features obtained are added to the features list of the image alongwith a unique hash.
-   5. Also these features are added to **im_contour_features** list.
-   6. 
+   4. All the features obtained are added to the features list of the image alongwith a unique hash. Also these features
+   are added to **im_contour_features** list.
+   5. 

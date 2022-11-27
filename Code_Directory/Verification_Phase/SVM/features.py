@@ -78,7 +78,7 @@ def SkewKurtosis(img):
 def get_contour_features(im, display=False):
     '''
     :param im: input preprocessed image | from function in prepoc.py | done in run.py
-    :param display: flag - if true display images
+    :param display: flag - if true display Project_Images
     :return:aspect ratio of bounding rectangle, area of : bounding rectangle, contours and convex hull
     '''
 

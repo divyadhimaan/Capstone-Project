@@ -150,7 +150,7 @@ def main():
             )
 
             # Threshold the image, this implementation is designed to process b+w
-            # images only
+            # Project_Images only
             img = img.point(lambda p: p > 128 and 255)
             img = img.convert("1")
 
@@ -175,7 +175,7 @@ def main():
 
     print(str(processed_files) + "/" + str(total_files) + " files processed successfully")
     print("Processing Complete.")
-    print("You may check the Result folder in the same directory to check the cropped images.")
+    print("You may check the Result folder in the same directory to check the cropped Project_Images.")
 
 
 def cropByConnectedComponent(points, temp, filename):

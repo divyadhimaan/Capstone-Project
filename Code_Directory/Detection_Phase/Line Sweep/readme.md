@@ -70,13 +70,13 @@ The main types of Thresholding techniques are:
 * cv2.THRESH_BINARY
 * cv2.THRESH_BINARY_INV
 
-![thresholding.png](../../../images/thresholding.png)
+![thresholding.png](../../../Project_Images/thresholding.png)
 
 We have used the inverse Binary thresholding technique so that we can only keep the foreground and darken the background.
 
 The result of the above thresholding is 
 
-![threshold_result.png](../../../images/threshold_result.png)
+![threshold_result.png](../../../Project_Images/threshold_result.png)
 
 **Step 4**: 
 
@@ -104,8 +104,8 @@ Once the boundary has been marked we will crop the image accordingly and store t
 
 Results from LineSweep Algorithm
 
-![LineSweep_result_Image1.png](../../../images/LineSweep_result_Image1.png)
-![LineSweep_result_Image2.png](../../../images/LineSweep_result_Image2.png)
+![LineSweep_result_Image1.png](../../../Project_Images/LineSweep_result_Image1.png)
+![LineSweep_result_Image2.png](../../../Project_Images/LineSweep_result_Image2.png)
 
 
 ###### Refer for Documentation 

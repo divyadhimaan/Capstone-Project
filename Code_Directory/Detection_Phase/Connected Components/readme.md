@@ -23,11 +23,11 @@ But this technique failed as our assumption is wrong.
 We might have signatures which are not connected. <br>
 Example 
 
-![NotConnectedExample.png](../../../images/NotConnectedExample.png)
+![NotConnectedExample.png](../../../Project_Images/NotConnectedExample.png)
    
 So the output of this signature will be wrong
 
-![WrongCCResult.png](../../../images/WrongCCResult.png)
+![WrongCCResult.png](../../../Project_Images/WrongCCResult.png)
     
 
 ###### Refer for Documentation 

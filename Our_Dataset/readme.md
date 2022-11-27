@@ -17,7 +17,7 @@ A total of 14 × 9=126 pen−volunteer combinations
 pen ink data generation. In practical scenario, 
 similar color pens are used for addition of new words in 
 source document. Each cheque is written by two volunteers 
-using two diﬀerent pens (either blue or black). 
+using two different pens (either blue or black). 
 
 Hence, data set is created with 2 × 7C2 = 42 possible 
 combinations of blue and black pens. 

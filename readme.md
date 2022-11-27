@@ -15,7 +15,7 @@ We devised an OCR based approach to localize signatures along with Connected Com
 
 ### Workflow of the Project
 
-![projectWorkflow.png](images/projectWorkflow.png)
+![projectWorkflow.png](Project_Images/projectWorkflow.png)
 
 ### Description of files:
 Signature_Detection folder contains codes for different approaches: 
