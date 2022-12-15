@@ -1,0 +1,61 @@
+.container {
+    margin-top: 20px;
+    background-color: rgb(197, 212, 227);
+    height: 680px;
+}
+
+.logo-img {
+    height: 80px;
+    /* border-radius: 50%; */
+    float: right;
+    margin-top: 10px;
+}
+
+.logo {
+    padding-top:10px;
+    align-items: center;
+    text-align: center;
+}
+
+.col-box {
+    text-align: center;
+    height: 560px;
+    margin: 30px 20px;
+    padding: 20px 10px;
+    background-color:rgb(165, 181, 197);
+}
+
+.list_item {
+    margin-top: 100px;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+}
+
+.upload-btn {
+    margin: 50px 30px 10px 30px;
+}
+.loader {
+    margin: 0 30px 10px 30px;
+    /* width: 120px; */
+    /* display: flex;
+    flex-direction: row; */
+}
+
+.reupload-btn {
+    margin: 0 30px 10px 30px;
+    /* width: 120px; */
+    display: flex;
+    flex-direction: row-reverse;
+
+}
+
+.nav-btn {
+    margin: 10px;
+}
+
+.output-btn {
+    width: 400px;
+    height: 300px;
+    margin-bottom: 20px;
+}
