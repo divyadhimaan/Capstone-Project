@@ -22,6 +22,11 @@ def home():
     return render_template('home.html')
 
 
+@app.route('/reload')
+def reload_page():
+    return redirect('/')
+
+
 @app.route('/predict', methods=['POST'])
 def upload_image():
     if 'file' not in request.files:
