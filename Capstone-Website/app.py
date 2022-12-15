@@ -1,7 +1,12 @@
 from flask import Flask
+import pickle
 from flask import render_template
 app = Flask(__name__)
+
+model = pickle.load(open('model.pkl','rb'))
+
 app.config['SECRET_KEY'] = 'asldfkjlj'
+
 
 @app.route('/')
 def home():

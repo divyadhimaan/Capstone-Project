@@ -13,6 +13,7 @@ from sklearn import tree
 from sklearn import linear_model
 import preproc
 import features
+import pickle
 
 genuine_image_filenames = listdir("data/genuine")  # list of names of all the files in directory data/genuine
 print("Total Number of Files in genuine folder: " + str(size(genuine_image_filenames)))
@@ -230,24 +231,32 @@ for i in range(29):
 
     train_forged_features, test_forged_features = im_features[5:8], im_features[8:10]
 
-    # test_features = im_features_test
-
-    clf = LinearSVC()
-    clf.fit(np.concatenate((train_forged_features, train_genuine_features)),
-            np.array([1 for x in range(len(train_forged_features))] + [2 for x in range(len(train_genuine_features))]))
-
-    genuine_res = clf.predict(test_genuine_features)
-    # test_res = clf.predict(test_features)
-
-    # print(test_res)
-
+    # # test_features = im_features_test
+    #
+    # clf = LinearSVC()
+    # clf.fit(np.concatenate((train_forged_features, train_genuine_features)),
+    #         np.array([1 for x in range(len(train_forged_features))] + [2 for x in range(len(train_genuine_features))]))
+    #
+    # pickle.dump(clf, open('model.pkl','wb'))
+    model = pickle.load(open('model.pkl', 'rb'))
+    # model.predict(train_genuine_features)
+    genuine_res = model.predict(test_genuine_features)
+    forged_res = model.predict(test_forged_features)
+    # genuine_res = clf.predict(test_genuine_features)
+    # # test_res = clf.predict(test_features)
+    #
+    # # print(test_res)
+    #
+    #
     for res in genuine_res:
         if int(res) == 2:
             cor += 1
         else:
             wrong += 1
 
-    forged_res = clf.predict(test_forged_features)
+
+
+
 
     for res in forged_res:
         if int(res) == 1:
