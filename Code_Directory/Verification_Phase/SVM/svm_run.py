@@ -204,8 +204,10 @@ for i in range(29):
 
     for res in forged_res:
         if int(res) == 1:
-            cor += 1
+            cor = cor
         else:
             wrong += 1
+        # if int(res) == 1:
+        #     wrong += 1
 
 print("Final Accuracy SVM: " + (str(float(cor) / (cor + wrong))))
