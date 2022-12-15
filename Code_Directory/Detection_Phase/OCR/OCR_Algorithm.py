@@ -1,3 +1,4 @@
+
 try:
     from PIL import Image
 except ImportError:
@@ -6,6 +7,7 @@ except ImportError:
 import pytesseract
 import cv2
 import os
+import numpy as np
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
@@ -24,12 +26,15 @@ processed_files = 0
 
 
 images_dir = "../../../Our_Dataset/cheque_images"
+# images_dir = "Data"
+
 # images_dir = "image"
 input_path = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), images_dir
 )
 
 for filename in os.listdir(input_path):
+
     total_files = total_files + 1
     if ".jpg" in filename:
         print("OCR Processing file -", filename)
@@ -39,21 +44,63 @@ for filename in os.listdir(input_path):
     h, w, _ = img.shape  # assumes color image
 
     # Get verbose data including boxes, confidences, line, page numbers and text
+    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+    lower = np.array([103, 79, 60])
+    upper = np.array([129, 255, 255])
+    mask = cv2.inRange(hsv, lower, upper)
+    cnts = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    cnts = cnts[0] if len(cnts) == 2 else cnts[1]
+    for c in cnts:
+        area = cv2.contourArea(c)
+        if area < 10:
+            cv2.drawContours(mask, [c], -1, (0, 0, 0), -1)
+
+    mask = 255 - mask
+    mask = cv2.GaussianBlur(mask, (3, 3), 0)
     data = pytesseract.image_to_data(Image.open(os.path.join(input_path,filename)))
+    # print(data)
+
+    # cv2.imshow('mask', mask)
+    # cv2.waitKey()
+
+    # print(data)
 
     # print (data)
     pleaseCd = [0, 0, 0, 0]
     aboveCd = [0, 0, 0, 0]
 
     for d in data.splitlines():
+
         d = d.split("\t")
+        print(d)
+
         if len(d) == 12:
             # # d[11] => text field of the image
             # # d[6] => left pointer of the image
             # # d[7] => right pointer of the image
             # # d[8] => width of the image
             # # d[9] => height of the image
-
+            flag1 = 0
+            # if(len(d[11]) == 12):
+            #     print(d[11])
+            if(len(d[11]) == 11):
+                s = d[11][:4]
+                temp = d[11]
+                # print(d[11])
+                if(s == "SYNB" or s == "SBIN" or s == "HDFC" or s == "CNRB" or s == "HDFC" or s == "PUNB" or s == "UTIB" or s == "ICIC"):
+                    print("IFSC CODE : ", d[11])
+                if(s == "1C1C"):
+                    str1 = temp
+                    list1 = list(str1)
+                    list1[0] = 'I'
+                    list1[2] = 'I'
+                    str1 = ''.join(list1)
+                    print("IFSC CODE : ", str1)
+                # for x in range(5):
+                #     if(d[11][x] >= 'A' and d[11][x] <= 'Z'):
+                #         flag = 1
+                # if (flag == 1):
+                #     print(d[11])
             if d[11].lower() == "please":
                 pleaseCd[0] = int(d[6])
                 pleaseCd[1] = int(d[7])
