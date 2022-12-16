@@ -34,7 +34,8 @@ def home():
 
 @app.route('/process', methods=['POST'])
 def process_image():
-    pass
+    file = open(r'../Code_Directory/Detection_Phase/OCR/OCR_Algorithm.py','r').read()
+    return exec(file)
 
 @app.route('/predict', methods=['POST'])
 def upload_image():

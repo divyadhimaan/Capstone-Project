@@ -25,8 +25,9 @@ total_files = 0
 processed_files = 0
 
 
-# images_dir = "../../../Our_Dataset/cheque_images"
-images_dir = "../../../Capstone-Website/static/uploads"
+images_dir = "../../../Our_Dataset/Testing"
+# print("Hey")
+# images_dir = "../../../Capstone-Website/static/uploads"
 # images_dir = "Data"
 
 # images_dir = "image"
