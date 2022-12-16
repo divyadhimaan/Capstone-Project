@@ -3,7 +3,7 @@ import pickle
 from flask import render_template
 app = Flask(__name__)
 
-model = pickle.load(open('model.pkl','rb'))
+model = pickle.load(open('../Code_Directory/Verification_Phase/SVM/model.pkl','rb'))
 
 from flask import render_template, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
