@@ -28,9 +28,13 @@ def home():
     return render_template('home.html')
 
 
-# @app.route('/reload')
-# def reload_page():
-#     return redirect('/')
+@app.route('/reload')
+def reload_page():
+    dirc = 'static/uploads'
+    for f in os.listdir(dirc):
+        os.remove(os.path.join(dirc, f))
+
+    return redirect('/')
 
 @app.route('/process', methods=['POST'])
 def process_image():
