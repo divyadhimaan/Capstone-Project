@@ -94,7 +94,7 @@ wrong = 0
 
 im_contour_features = []
 
-for i in range(5):
+for i in range(29):
     # print(genuine_image_features[i])
     des_list = []
     for im in genuine_image_features[i]:
@@ -269,10 +269,6 @@ for i in range(5):
             cor += 1
         else:
             wrong += 1
-
-
-
-
 
     for res in forged_res:
         if int(res) == 1:
