@@ -28,10 +28,13 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/reload')
-def reload_page():
-    return redirect('/')
+# @app.route('/reload')
+# def reload_page():
+#     return redirect('/')
 
+@app.route('/process', methods=['POST'])
+def process_image():
+    pass
 
 @app.route('/predict', methods=['POST'])
 def upload_image():

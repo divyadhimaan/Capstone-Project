@@ -68,6 +68,12 @@
                      {% endif %}
                     {% endwith %}
               </form>
+                  <form method="post" action="/process" enctype="multipart/form-data">
+                    <div style="display: flex; justify-content: center;">
+                            <input type="submit" value="Start Processing" class="btn btn-primary nav-btn" style="padding-left:15%; padding-right: 15%;">
+                    </div>
+              </form>
+
                 <div action="/reload">
                     <a href="{{ url_for('home') }}">
                         <button class="btn btn-secondary nav-btn " style="float: right; margin-right: 2%;" >
