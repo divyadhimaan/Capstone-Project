@@ -1,6 +1,10 @@
 from flask import Flask
 import pickle
 from flask import render_template
+import ocr
+import lineSweep
+
+
 app = Flask(__name__)
 
 model = pickle.load(open('../Code_Directory/Verification_Phase/SVM/model.pkl','rb'))
@@ -30,16 +34,29 @@ def home():
 
 @app.route('/reload')
 def reload_page():
-    dirc = 'static/uploads'
-    for f in os.listdir(dirc):
-        os.remove(os.path.join(dirc, f))
+    dir1 = 'static/uploads'
+    dir2 = 'static/OCR_Results'
+    dir3 = 'static/LineSweep_Results'
+    for f in os.listdir(dir1):
+        os.remove(os.path.join(dir1, f))
+
+    for f in os.listdir(dir2):
+        os.remove(os.path.join(dir2, f))
+
+    for f in os.listdir(dir3):
+        os.remove(os.path.join(dir3, f))
+    return redirect('/')
+
+
+@app.route('/process_ocr', methods=['POST'])
+def process_image():
+    ocr.ocr_algo()
+    flash('OCR executed Successfully')
+    lineSweep.lineSweep_algo()
+    flash('Line Sweep executed Successfully')
 
     return redirect('/')
 
-@app.route('/process', methods=['POST'])
-def process_image():
-    file = open(r'../Code_Directory/Detection_Phase/OCR/OCR_Algorithm.py','r').read()
-    return exec(file)
 
 @app.route('/predict', methods=['POST'])
 def upload_image():
