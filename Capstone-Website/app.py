@@ -3,6 +3,7 @@ import pickle
 from flask import render_template
 import ocr
 import lineSweep
+import svm
 
 
 app = Flask(__name__)
@@ -50,11 +51,9 @@ def reload_page():
 
 @app.route('/process_ocr', methods=['POST'])
 def process_image():
-    ocr.ocr_algo()
-    flash('OCR executed Successfully')
-    lineSweep.lineSweep_algo()
-    flash('Line Sweep executed Successfully')
-
+    flash(ocr.ocr_algo())
+    flash(lineSweep.lineSweep_algo())
+    flash(svm.svm_algo())
     return redirect('/')
 
 

@@ -45,3 +45,7 @@ But this is not always true. So this technique fails.
 The OCR Approach -> Identify the signatures and crop the images
 The LineSweep Algorithm -> Use OCR result images and do rectangle fitting across the signature.
 
+
+The final interface:
+
+![userInterface.png](Project_Images/user_interface.png)

@@ -139,7 +139,9 @@ def lineSweep_algo():
             if not os.path.exists(path):
                 os.makedirs(path)
 
-            s1 = "LineSweep_Result_" + filename
+            # s1 = "LineSweep_Result_" + filename
+            s1 = "021001_003" + filename[-4:]
+            print(s1)
             cv2.imwrite(os.path.join(path, s1), temp_np)
 
     print(str(processed_files) + "/" + str(total_files) + " files processed successfully")
