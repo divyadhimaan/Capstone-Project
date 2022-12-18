@@ -6,6 +6,8 @@ import cv2
 
 
 def lineSweep_algo():
+    print("processing image through line sweep algo...")
+
     images_dir = "static/OCR_Results"
     # images_dir = "image"
     input_path = os.path.join(
@@ -144,9 +146,9 @@ def lineSweep_algo():
             print(s1)
             cv2.imwrite(os.path.join(path, s1), temp_np)
 
-    print(str(processed_files) + "/" + str(total_files) + " files processed successfully")
+    # print(str(processed_files) + "/" + str(total_files) + " files processed successfully")
     print("Processing Complete.")
-    print("You may check the Result folder in the same directory to see the cropped Project_Images.")
+    # print("You may check the Result folder in the same directory to see the cropped Project_Images.")
 
     return "Line Sweep Algorithm Successfully completed."
 

@@ -17,9 +17,9 @@ import pickle
 
 def svm_algo():
     genuine_image_filenames = listdir("data/genuine")  # list of names of all the files in directory data/genuine
-    print("Total Number of Files in genuine folder: " + str(size(genuine_image_filenames)))
+    # print("Total Number of Files in genuine folder: " + str(size(genuine_image_filenames)))
     forged_image_filenames = listdir("data/forged")  # list of names of all the files in directory data/forged
-    print("Total Number of Files in forged folder: " + str(size(forged_image_filenames)))
+    # print("Total Number of Files in forged folder: " + str(size(forged_image_filenames)))
     # print(genuine_image_filenames)
     # print(forged_image_filenames)
     genuine_image_paths = "data/genuine"
@@ -28,32 +28,24 @@ def svm_algo():
     #
     image_test = listdir("static/LineSweep_Results")
 
-
     image_features = []
 
     genuine_image_features = [[] for x in range(29)]  # creates empty list of 29 features.
     forged_image_features = [[] for x in range(29)]
 
-
-    # print(genuine_image_features)
-    # print(forged_image_features)
-
     countSignaturePerUser = 0
     # Now we will add the file name to the features and group together all signatures of each user
     for name in genuine_image_filenames:
         signature_id = int(name.split('_')[0][-3:])
-        print("signature_id")
-        print(signature_id)
+        # print("signature_id")
         genuine_image_features[signature_id - 1].append({"name": name})
-
-    # print(genuine_image_features)
 
     for _ in genuine_image_features:
         for __ in _:
             countSignaturePerUser = countSignaturePerUser + 1
         break
-    print("Total Genuine Signatures per User : " + str(countSignaturePerUser))
-    print("Total Forged Signatures per User : " + str(countSignaturePerUser))
+    # print("Total Genuine Signatures per User : " + str(countSignaturePerUser))
+    # print("Total Forged Signatures per User : " + str(countSignaturePerUser))
 
     for name in forged_image_filenames:
         signature_id = int(name.split('_')[0][-3:])
@@ -65,15 +57,11 @@ def svm_algo():
         signature_id = int(name.split('_')[0][-3:])
         image_features.append({"name": name})
 
-    # print(image_features)
-
     def preprocess_image(path, display=False):
         # return 0,1 image
         return preproc.preproc(path, display=display)
 
-
     des_list = []
-
 
     def sift(im, path, display=False):
         raw_image = cv2.imread(path)
@@ -88,12 +76,13 @@ def svm_algo():
 
         return (path, des)
 
-
-    cor = 0
-    wrong = 0
+    cor_gen = 0
+    wrong_gen = 0
+    cor_for = 0
+    wrong_for = 0
 
     im_contour_features = []
-
+    print("processing svm model...")
     for i in range(29):
         # print(genuine_image_features[i])
         des_list = []
@@ -119,7 +108,6 @@ def svm_algo():
             im['eccentricity'], im['solidity'] = features.EccentricitySolidity(preprocessed_image.copy())
             (im['skewness_0'], im['skewness_1']), (im['kurtosis_0'], im['kurtosis_1']) = features.SkewKurtosis(
                 preprocessed_image.copy())
-
             # im_contour_features.append([hash, aspect_ratio, convex_hull_area / bounding_rect_area, contours_area / bounding_rect_area])
             im_contour_features.append(
                 [aspect_ratio, convex_hull_area / bounding_rect_area, contours_area / bounding_rect_area, im['ratio'],
@@ -213,8 +201,8 @@ def svm_algo():
                 im_features[ii][k + j] = im_contour_features[ii][j]
 
         im_features_test = np.zeros((len(image_features[0]), k + 12), "float32")
-        print(len(im_features_test[0]))
-        print(len(im_contour_features_test[0]))
+        # print(len(im_features_test[0]))
+        # print(len(im_contour_features_test[0]))
         for ii in range(len(image_features)):
             words, distance = vq(des_list[ii][1], voc)
             for w in words:
@@ -254,30 +242,33 @@ def svm_algo():
         genuine_res = clf.predict(test_genuine_features)
         forged_res = clf.predict(test_forged_features)
 
-        test_res = clf.predict(test_features)
-        #
-        print("test_res")
-        print(test_res)
-        print("genuine_res")
-        print(genuine_res)
-        print("forged_res")
-        print(forged_res)
-        #
-        #
+        # test_res = clf.predict(test_features)
+
         for res in genuine_res:
             if int(res) == 2:
-                cor += 1
+                cor_gen += 1
             else:
-                wrong += 1
+                wrong_gen += 1
 
         for res in forged_res:
             if int(res) == 1:
-                cor = cor
+                cor_for += 1
             else:
-                wrong += 1
-            # if int(res) == 1:
-            #     wrong += 1
+                wrong_for += 1
 
-    print("Final Accuracy SVM: " + (str(float(cor) / (cor + wrong))))
+    res_forged = float(cor_for/(cor_for + wrong_for))
+    res_genuine = float(cor_gen/(cor_gen + wrong_gen))
 
-    return "SVM Algorithm Successfully completed."
+    print("res_forged " + str(res_forged))
+    print("res_genuine " + str(res_genuine))
+
+    result = ""
+    if res_genuine > res_forged:
+        result = "Genuine"
+    else:
+        result = "Forged"
+
+    print("Processing Complete.")
+    # print("Final Accuracy SVM: " + (str(float(cor) / (cor + wrong))))
+
+    return result

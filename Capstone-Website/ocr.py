@@ -28,6 +28,9 @@ images_dir = "static/uploads"
 
 
 def ocr_algo():
+
+    print("processing image through OCR algo...")
+
     # images_dir = "image"
     dir_path = os.path.dirname(os.path.abspath(__file__))
     # print(os.path.dirname(os.path.abspath(__file__)))
@@ -41,7 +44,7 @@ def ocr_algo():
     above = 0
     total_files = 0
     processed_files = 0
-
+    result = ""
     for filename in os.listdir(input_path):
 
         total_files = total_files + 1
@@ -67,21 +70,14 @@ def ocr_algo():
         mask = 255 - mask
         mask = cv2.GaussianBlur(mask, (3, 3), 0)
         data = pytesseract.image_to_data(Image.open(os.path.join(input_path,filename)))
-        # print(data)
 
-        # cv2.imshow('mask', mask)
-        # cv2.waitKey()
-
-        # print(data)
-
-        # print (data)
         pleaseCd = [0, 0, 0, 0]
         aboveCd = [0, 0, 0, 0]
 
         for d in data.splitlines():
 
             d = d.split("\t")
-            print(d)
+            # print(d)
 
             if len(d) == 12:
                 # # d[11] => text field of the image
@@ -92,12 +88,17 @@ def ocr_algo():
                 flag1 = 0
                 # if(len(d[11]) == 12):
                 #     print(d[11])
+
                 if(len(d[11]) == 11):
                     s = d[11][:4]
                     temp = d[11]
                     # print(d[11])
-                    if(s == "SYNB" or s == "SBIN" or s == "HDFC" or s == "CNRB" or s == "HDFC" or s == "PUNB" or s == "UTIB" or s == "ICIC"):
+                    if(s == "SYNB" or s == "SBIN" or s == "HDFC" or s == "CNRB" or s == "HDFC" or s == "PUNB" or
+                            s == "UTIB" or s == "ICIC"):
+                        # result.append(d[11])
+                        result = d[11]
                         print("IFSC CODE : ", d[11])
+
                     if(s == "1C1C"):
                         str1 = temp
                         list1 = list(str1)
@@ -110,6 +111,9 @@ def ocr_algo():
                     #         flag = 1
                     # if (flag == 1):
                     #     print(d[11])
+                    #     result.append(str1)
+                        result = str1
+                print(result)
                 if d[11].lower() == "please":
                     pleaseCd[0] = int(d[6])
                     pleaseCd[1] = int(d[7])
@@ -162,8 +166,8 @@ def ocr_algo():
             processed_files = processed_files + 1
             cv2.imwrite(os.path.join(path, s1), cropImg)
 
-    print(str(processed_files) + "/" + str(total_files) + " files processed successfully.")
+    # print(str(processed_files) + "/" + str(total_files) + " files processed successfully.")
     print("Processing Complete.")
-    print("You may check the Result folder in the same directory to see the cropped Project_Images.")
-
-    return "OCR Algorithm Successfully completed."
+    # print("You may check the Result folder in the same directory to see the cropped Project_Images.")
+    # result.append("OCR Algorithm Successfully completed.")
+    return str(result)

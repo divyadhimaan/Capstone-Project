@@ -51,10 +51,19 @@ def reload_page():
 
 @app.route('/process_ocr', methods=['POST'])
 def process_image():
-    flash(ocr.ocr_algo())
-    flash(lineSweep.lineSweep_algo())
-    flash(svm.svm_algo())
-    return redirect('/')
+    # res = ocr.ocr_algo()
+    # lineSweep.lineSweep_algo()
+    result = svm.svm_algo()
+
+    # flash("Algorithm successfully completed for IFSC Code : " + res)
+    if result == "Genuine":
+        ret = "Genuine Signature"
+        return render_template("home.html", result=ret)
+    else:
+        ret = "Forged Signature"
+        return render_template("home.html", result=ret)
+
+    # return redirect('/')
 
 
 @app.route('/predict', methods=['POST'])
