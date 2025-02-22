@@ -84,7 +84,7 @@ def get_contour_features(im, display=False):
 
     rect = cv2.minAreaRect(cv2.findNonZero(im))
     box = cv2.boxPoints(rect)
-    box = np.int0(box)
+    box = np.int8(box)
 
     w = np.linalg.norm(box[0] - box[1])
     h = np.linalg.norm(box[1] - box[2])

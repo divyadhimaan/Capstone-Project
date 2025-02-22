@@ -1,8 +1,11 @@
-## Connected Components Algorithm
+# Connected Components Algorithm
+The Connected Components Algorithm is used to identify and label connected regions (components) in a binary image. It is commonly used in image processing to detect and isolate distinct objects within an image.
 
-Major Assumption: The signatures we want to extract will always be connected.
 
-**Idea** <br>
+## Major Assumption
+The signatures we want to extract will always be connected.
+
+## Idea
 To remove that non-useful text, we used a connected components labeling algorithm to fit a tight box around the signature.<br>
 Two passes of connected component labeling were applied to get the connected components in an image. 
 
@@ -18,18 +21,18 @@ from the image.
 3. Union Find Array (Self made module to implement Union Find)
 
 
-But this technique failed as our assumption is wrong.
+### Failure Scenarios
+This technique is very tightly based on our assumption of always having connected signatures. We might have signatures which are not connected. 
 
-We might have signatures which are not connected. <br>
-Example 
-
-![NotConnectedExample.png](../../../Project_Images/NotConnectedExample.png)
-   
-So the output of this signature will be wrong
-
-![WrongCCResult.png](../../../Project_Images/WrongCCResult.png)
+> Example 
+> 
+> ![NotConnectedExample.png](../../../Project_Images/NotConnectedExample.png)
+> 
+> So the output of this signature will be wrong
+> 
+> ![WrongCCResult.png](../../../Project_Images/WrongCCResult.png)
     
 
-###### Refer for Documentation 
+## Documentation 
 * Connected Component Algorithm - https://www.geeksforgeeks.org/connected-components-in-an-undirected-graph/
 * Union Find Array - https://www.geeksforgeeks.org/number-of-connected-components-of-a-graph-using-disjoint-set-union/

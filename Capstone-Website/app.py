@@ -33,6 +33,7 @@ def home():
     return render_template('home.html')
 
 
+
 @app.route('/reload')
 def reload_page():
     dir1 = 'static/uploads'

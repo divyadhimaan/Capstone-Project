@@ -1,14 +1,14 @@
-## LineSweep Algorithm
+# LineSweep Algorithm
+The Line Sweep Algorithm is a computational geometry technique used to solve various problems by sweeping a line across the plane and processing events in a specific order. In the context of image processing, it is used to detect and fit rectangles around objects, such as signatures, in an image.
 
-We have used OCR based Signature Detection <br>
-But, we have used different algorithm for rectangle fitting across the signature. 
+## Idea
 
 The **Line-Sweeping algorithm** was run in both ways: vertically and horizontally.<br> 
 On the basis of this, the exact signature is detected and after that this image is passed as an input to the verification algorithm.
 
 The Result Images obtained from OCR based Signature Verification Approach are now passed through Line Sweep Algorithm. <br>
 
-
+> Note: Line Sweep is better performant than Connected Components Algorithm
 ### Tools Used
 
 1. **OpenCV-Python** is a library of Python bindings designed to solve computer vision problems.
@@ -22,12 +22,12 @@ The Result Images obtained from OCR based Signature Verification Approach are no
     
     * The *Image* module provides a class with the same name which is used to represent a PIL image. The module also provides a number of factory functions, including functions to load images from files, and to create new images.
 
-### Steps
-**Step 1**: 
+## Steps Involved for Line Sweep Algorithm
+### Step 1: 
 
 The OCR Result Images are read from the Result Folder.
 
-**Step 2**: 
+### Step 2: 
 
 The image picked is converted into grayscale using PIL library function
      
@@ -47,7 +47,7 @@ To convert into grayscale:
     
     img.convert("L")
 
-**Step 3**: 
+### Step 3:
 
 Find the **threshold** of the image.
 
@@ -78,11 +78,11 @@ The result of the above thresholding is
 
 ![threshold_result.png](../../../Project_Images/threshold_result.png)
 
-**Step 4**: 
+### Step 4:
 
 Now we will find the starting X and Y indexes alongwith ending X and Y indexes of the thresholded image.<br>
 
-**Step 5**: 
+### Step 5:
 
 After the indexes have been found we will mark the boundaries of the signature using an opencv function.<br>
 cv2.line() method is used to draw a line on any image.
@@ -96,9 +96,9 @@ This will act as a boundary marker for the image to be cropped.
       -> end_point: It is the ending coordinates of the line. The coordinates are represented as tuples of two values i.e. (X coordinate value, Y coordinate value). 
       -> color: It is the color of the line to be drawn. For RGB, we pass a tuple. eg: (255, 0, 0) for blue color.
       -> thickness: It is the thickness of the line in px. 
-   
 
-**Step 6**:
+
+### Step 6:
 
 Once the boundary has been marked we will crop the image accordingly and store the required image into our result.
 
@@ -108,6 +108,7 @@ Results from LineSweep Algorithm
 ![LineSweep_result_Image2.png](../../../Project_Images/LineSweep_result_Image2.png)
 
 
-###### Refer for Documentation 
+
+## Documentation 
 * Pytesseract - https://pypi.org/project/pytesseract/
 * cv2 - https://pypi.org/project/opencv-python/

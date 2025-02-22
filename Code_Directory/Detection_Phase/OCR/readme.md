@@ -1,5 +1,5 @@
 ## OCR based Signature Detection
-
+The OCR (Optical Character Recognition) approach involves using OCR technology to identify and extract text from images. In the context of your project, the OCR approach is used to localize potential signature areas on bank cheques. 
 
 ### Tool: pytesseract, OpenCV
 
@@ -11,7 +11,6 @@ It will recognize and “read” the text embedded in images.
 ### Assumption
 
 Documents / Cheques contain phrases such as “Please sign above”, “Signature”, etc.
-
 
 ### Steps
 

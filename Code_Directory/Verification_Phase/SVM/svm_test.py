@@ -262,8 +262,7 @@ for i in range(29):
     print(genuine_res)
     print("forged_res")
     print(forged_res)
-    #
-    #
+
     for res in genuine_res:
         if int(res) == 2:
             cor += 1

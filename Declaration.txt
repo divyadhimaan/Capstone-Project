@@ -1,0 +1,14 @@
+We, the undersigned, hereby declare that the capstone project titled “Signature Verification on Bank Cheques to Reduce Fraud in Financial Institutions” is an original and authentic record of our work. This project was undertaken as part of our Capstone Project in the seventh semester of the Bachelor of Engineering (Electronics & Computer Engineering) program at Thapar Institute of Engineering and Technology, Patiala.
+
+This work was carried out under the esteemed guidance of Dr. Harpreet Vohra and Dr. Gaganpreet Kaur during the academic period from January to December 2022. We affirm that all research, development, and implementation presented in this project are the result of our dedicated efforts and have not been copied, replicated, or derived from any unauthorized sources.
+
+We express our sincere gratitude to our mentors, faculty members, and the institution for their valuable support and encouragement throughout this project.
+
+Submitted By:
+
+Divya Dhiman (101915009)
+Raghav Ghai (101915010)
+Anushka Aggarwal (101915014)
+Sparsh Agarwal (101915010)
+Shaina Gupta (101915207)
+
